@@ -1,0 +1,67 @@
+/* Table */
+table.inputtable {
+	width: 100%;
+	margin: 5px 0;
+	border: 1px solid #eee;
+	border-collapse: collapse;
+	border-spacing: 0;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+/* Buttons */
+table.inputtable a.icon-button {
+	/*background-color: #ccc;*/
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: 800;
+	line-height: 16px;
+	text-align: center;
+	font-size: 12px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+/* Add Buttons */
+table.inputtable a.icon-button.addcol, table.inputtable a.icon-button.addrow {
+	background-color: #81b71a;
+}
+/* Remove Buttons */
+table.inputtable a.icon-button.delcol, table.inputtable a.icon-button.delrow {
+	background-color: #db4a39;
+}
+/* Disabled Buttons */
+table.inputtable a.icon-button.disabled {
+	background-color: #eee;
+}
+/* Table single cells */
+table.inputtable td, table.inputtable th {
+	border: 1px solid gray;text-align: center;height: 16px;vertical-align: middle;font-size: 12px;
+}
+/* Table headers single cells */
+table.inputtable th {
+	border-bottom: 2px solid gray;
+	color : white;
+	font-weight: 800;
+}
+/* Table body inputs */
+table.inputtable td input {
+	border: 0;
+	width: 90%;
+	height: 100%;
+	padding: 0 1%;
+	text-align: center;
+	color : white;
+	background-color: inherit;
+}
+/* Table body inputs on focus */
+table.inputtable tr td input:focus {
+	background-color: #fafafa;
+}
+/* First body row cells & input on table without columns header */
+table.inputtable.wh tbody tr:nth-child(1), table.inputtable.wh tbody tr:nth-child(1) input {
+	font-weight: 800;
+}

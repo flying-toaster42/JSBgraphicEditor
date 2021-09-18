@@ -1,0 +1,241 @@
+@namespace svg "http://www.w3.org/2000/svg";
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+body {
+    background: #252525;
+    width: 100%;
+    border: 0px;
+    overflow: hidden;
+    display: block;
+}
+
+/* Button --------------------------------------------------------------------*/
+.BlueButton
+{
+    color : white;
+    padding: 1px 5px;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px black;
+    height : 28px;
+    width : 28px;
+    text-decoration: rgb(101, 166, 204);
+    font-size: 12px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-image: linear-gradient(#5c5c5c,rgb(104,104,104) 48%, #1b1b1b 52%, #414141);
+    border: 2px solid white;
+}
+
+.BlueButton:active
+{
+    transform: translate(0.5px, 0.5px);
+}
+
+.BlueButton:hover
+{
+    background-image: linear-gradient(#636363, rgb(163,163,163) 48%, #272727 52%, #797979);
+}
+
+.BlueButton[toggledOn]
+{
+    background-image: linear-gradient(#725e3a, rgb(153, 119, 79) 48%, #302917 52%, #705e3d);
+}
+
+/* Container  ----------------------------------------------------------------*/
+.full-page-layout
+{
+    display:flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 100%;
+    margin: 0px;
+}
+
+.center-horizontal-panel
+{
+    display:flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.center-panel
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+div.tree_output
+{
+    display:fixed;
+    background-color: #252525;
+    width: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 12px;
+    min-width: 96px;
+    max-width: 400px;
+}
+
+#graphic-area
+{
+    flex-grow: 3;
+    position:relative;
+}
+
+#right-pane
+{
+    display:flex;
+    flex-flow: column;
+    align-items: stretch;
+    min-width: 200px;
+}
+
+svg text
+{
+    pointer-events: none;
+    user-select: none;
+}
+
+#numeric-list
+{
+    display:fixed;
+    background-color: #252525;
+    width: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.floating-box
+{
+    position:absolute;
+    background-color: pink;
+    border-width: 3px;
+    border-color:red;
+    height : 50px;
+    width : 50px;
+    border-radius: 5px;
+}
+
+/* Resize handle -------------------------------------------------------------*/
+.resize-handle
+{
+    width:5px;
+    min-height: 100%;
+    cursor: ew-resize;
+    background-image: linear-gradient(to right,#5a5a5a,rgb(104,104,104) 48%, #1b1b1b 52%, #474747);
+}
+
+/* Main menu -----------------------------------------------------------------*/
+
+.dropbtn
+{
+    background-color: inherit;
+    color: white;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.dropdown
+{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-content
+{
+  display: block;
+}
+
+.dropdown:hover .dropbtn
+{
+    background-color: #464646;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.dropdown-content
+{
+    display: none;
+    position: absolute;
+    background-color: #1f1f1f;
+    padding : 4px 0px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.menu-item
+{
+    color: white;
+    padding: 4px 4px;
+    user-select: none;
+    text-align: left;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 4px;
+}
+
+.menu-item span
+{
+    color: #606060;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.5);
+}
+
+.menu-item:hover
+{
+    background-position: content-box;
+    background-color: #464646;
+}
+
+.title
+{
+    text-align: left;
+    color: white;
+    font-size: 12px;
+    margin: 0px;
+    background-color: #303030;
+    user-select: none;
+    padding: 4px;
+    padding-left: 16px;
+    border-left: 1px solid #606060;
+}
+
+.placeholder
+{
+    flex-grow : 1;
+    background-color: #a0a0a0;
+    opacity: 0.8;
+    background-image:  repeating-linear-gradient(45deg, #404040 25%, transparent 25%, transparent 75%, #404040 75%, #404040), repeating-linear-gradient(45deg, #404040 25%, #a0a0a0 25%, #a0a0a0 75%, #404040 75%, #404040);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+}
+
+/* Main menu -----------------------------------------------------------------*/
+
+#footer
+{
+      background-color: #303030;
+      color: white;
+      width: 100%;
+      height: 24px;
+      display: flex;
+      align-items: center;
+}
+
+#header
+{
+    flex: initial;
+    height: 24px;
+    line-height: 24px;
+}

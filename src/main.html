@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--
+ This file is part of JSB graphic editor.
+
+ JSB graphic editor is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ JSB graphic editor is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with JSB graphic editor.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+       <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+       <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'; worker-src 'blob:' ">-->
+        <title>JSB editor</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="themes/default/style.min.css" />
+        <link rel="stylesheet" href="themes/default-dark/style.min.css" />
+        <link rel="stylesheet" href="jquery.edittable.css" />
+
+        <script src="jquery-3.6.0.min.js"></script>
+        <script src="jstree.js"></script>
+
+        <script src="jquery.edittable.js"></script>
+
+        <script src="snap.svg.js"></script>
+        <script src="SVG-addenda.js"></script>
+
+        <script src="undo-manager.js"></script>
+
+        <script src="central-pane.js"></script>
+        <script src="help-line.js"></script>
+
+        <script src="table2D.js"></script>
+        <script src="table2D-clipboard.js"></script>
+        <script src="table2D-units.js"></script>
+        <script src="table2D-save.js"></script>
+        <script src="table3D.js"></script>
+        <script src="table3D-save.js"></script>
+
+        <script src="numeric.js"></script>
+
+        <script src="curve.js"></script>
+        <script src="curve-axis.js"></script>
+        <script src="curve-handles.js"></script>
+        <script src="curve-buttons.js"></script>
+
+        <script src="graph-view.js"></script>
+
+        <script src="tables.js"></script>
+
+        <script src="JSB-file.js"></script>
+        <script src="main-window.js"></script>
+    </head>
+
+    <body>
+
+        <div class="full-page-layout">
+
+            <!-- Menu Bar ************************************************  -->
+            <div id="header">
+                <div class="dropdown">
+                    <button class="dropbtn">File</button>
+                    <div class="dropdown-content">
+                        <div onclick="loadJSB();" class="menu-item" >Open <span> (Ctrl+O)</span></div>
+                        <div onclick="saveAsJSB();" class="menu-item" >Save As</div>
+                        <div onclick="saveJSB();" class="menu-item" >Save <span> (Ctrl+s)</span></div>
+                        <div onclick=" window.API.exit ();" class="menu-item" >Exit <span> (Alt+F4)</span></div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Edit</button>
+                    <div class="dropdown-content">
+                        <div class="menu-item" >Cut</div>
+                        <div class="menu-item" >Copy</div>
+                        <div class="menu-item" >Paste</div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Help</button>
+                    <div class="dropdown-content">
+                        <div class="menu-item" >About</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- center pane ************************************************  -->
+            <div id="central-placeholder" class="placeholder"></div>
+
+            <div id="central-pane" class="center-horizontal-panel">
+                <div id="tables" class="tables-column">
+                    <p id="file-name" class="title">File name</p>
+                    <div id="tree" class="tree_output">
+                    </div>
+                    <p class="title" id="table-title">Tables</p>
+                    <div id="tables-list" class="tree_output">
+                    </div>
+                </div>
+
+                <div id="graphic-placeholder" class="placeholder"></div>
+
+                <div id="graphic-area">
+                    <p class="title" id="curve-title"></p>
+                    <div id="drawing" >
+                        <svg id="curve">
+                        </svg>
+                    </div>
+                    <div id="buttons">
+                        <button id="zoom" class="BlueButton">
+                            <img src="icons/zoom.png">
+                        </button>
+                        <button id="constraint" class="BlueButton">
+                            <img src="icons/vertical.png">
+                        </button>
+                    </div>
+                </div>
+
+                <div id="right-pane" style="width : 300px">
+                    <p class="title">Values</p>
+                    <div style="text-align: center; color: white; font-size: 12px; margin: 2px;">
+                        Units <b>X</b>
+                        <select id="x-source-unit" class="combo"></select>
+                        <select id="x-display-unit" class="combo"></select>
+                        <b>Y</b>
+                        <select id="y-source-unit" class="combo"></select>
+                        <select id="y-display-unit" class="combo"></select>
+                    </div>
+                    <div id="numeric-list" style="width : 300px">
+                        <p style="text-align:center; color:white; padding: 70px;">No table loaded</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer ***************************************************  -->
+            <div id="footer">
+                <p class="title" id="help-line">Footer</p>
+            </div>
+
+        </div>
+
+
+    </body>
+
+</html>
