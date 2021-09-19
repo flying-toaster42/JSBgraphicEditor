@@ -44,7 +44,7 @@
           "name": "@electron-forge/publisher-github",
           "config": {
             "repository": {
-              "owner": "flying.toaster45",
+              "owner": "flying.toaster42",
               "name": "JSBgraphicEditor"
             }
           }
@@ -61,7 +61,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.61",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
-    "@electron-forge/publisher-github": "^6.0.0-beta.61",
+    "@electron-forge/publisher-github": "6.0.0-beta.52",
     "electron": "14.0.1"
   },
   "repository": "https://github.com/flying-toaster42/JSBgraphicEditor.git",
