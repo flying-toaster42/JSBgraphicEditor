@@ -164,8 +164,8 @@ function loadJSB ()
     //remove the main placeholder in case of success
     $("#central-pane").show(0);
     $("#central-placeholder").hide(0);
-    $("#graphic-placeholder").hide(0);
-    $("#graphic-area").show(0);
+    $("#graphic-placeholder").show(0);
+    $("#graphic-area").hide(0);
     if (active_curve !=null) active_curve.hide();
 
     parser = new DOMParser();
