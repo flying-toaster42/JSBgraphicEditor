@@ -15,6 +15,7 @@
 
 const { app, BrowserWindow, dialog, ipcMain} = require('electron');
 const path = require ('path');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 var name_of_active_file ="";
 
@@ -32,11 +33,25 @@ function createWindow ()
   win = new BrowserWindow({ width: 800,
                             height: 600,
                             minWidth : 800,
-                            icon:"./icons/icon.ico",
+                            icon:"src/icons/icon.ico",
                             webPreferences : { preload: path_to_preload,
                                                contextIsolation : true}});
   // Uncomment to get the developper tools in the main window
   //win.webContents.openDevTools();
+
+  win.webContents.setWindowOpenHandler(
+    ({url})=> { if (url.includes( 'About.html'))
+                {
+                  return { action : 'allow',
+                           overrideBrowserWindowOptions : {fullscreenable : false,
+                                                           autoHideMenuBar : true,
+                                                           resizable : false,
+                                                           webPreferences :{defaultFontSize : '10px'},
+                                                           icon : 'src/icons/icon.ico'}
+                         };
+                }
+                else return null;
+              });
 
   // and load the index.html of the app.
   win.setMenu(null);
@@ -90,6 +105,7 @@ function createWindow ()
                 }
 
               }
+              else app.quit();
           });
 
 }

@@ -16,8 +16,6 @@
 const margin = 5.0;
 const circle_style = {stroke: "#00FFFF",strokeWidth: 1.5, fill:"#000000"};
 
-var curve_active = null;
-
 function Curve (svg_root, title_bar, buttons)
 {
     this.container = $(svg_root).parent();
@@ -43,9 +41,9 @@ function Curve (svg_root, title_bar, buttons)
 
     var me = this;
 
-    this.container.mouseenter (function (event) {curve_active = me;});
+  //  this.container.mouseenter (function (event) {active_curve = me;});
 
-    this.container.mouseleave (function (event) {curve_active = null;});
+  //  this.container.mouseleave (function (event) {active_curve = null;});
 
     this.container.on ("wheel", function (event)
                                 {

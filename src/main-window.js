@@ -23,6 +23,7 @@ var application_window =
 {
 
 };
+
 var central_panel = {};
 var header = {};
 var footer = {};
@@ -30,7 +31,7 @@ var main_window_top_level_SVG = {};
 var tree_window_top_level_SVG = {};
 var main_window_SVG_canvas = {};
 var tree_window_SVG_canvas = {};
-var curve1 = null;
+var active_curve = null;
 var numeric_view = null;
 var graph_view = null;
 
@@ -56,7 +57,7 @@ window.onload = function ()
     header = document.getElementById("header");
     footer = document.getElementById("footer");
     const resize_observer = new ResizeObserver(()=>{central_pane.resize ();
-        if (curve1 != null) curve1.resize();
+        if (active_curve != null) active_curve.resize();
         if (graph_view != null) graph_view.resize();});
     resize_observer.observe (document.getElementById("tables"));
 
@@ -70,13 +71,13 @@ window.onload = function ()
                             if (event.ctrlKey && event.key == 'z') undoAction();
                             if (event.ctrlKey && event.key == 'o') loadJSB();
                             if (event.ctrlKey && event.key == 's') saveJSB();
-                            if (curve_active != null
+                            if (active_curve != null
                                 && event.ctrlKey
-                                && event.key == 'c') curve_active.table2D.copy();
+                                && event.key == 'c') active_curve.table2D.copy();
 
-                            if (curve_active != null
+                            if (active_curve != null
                                 && event.ctrlKey
-                                && event.key == 'v') curve_active.table2D.paste();
+                                && event.key == 'v') active_curve.table2D.paste();
                         });
 
     //graph_view = new GraphView ("#curve", "#curve-title", "#buttons");
@@ -101,7 +102,7 @@ function resizingTimer ()
         resizing = false;
         resize_timer = resize_timeout;
         central_pane.resize ();
-        if (curve1 != null) curve1.resize();
+        if (active_curve != null) active_curve.resize();
         if (graph_view != null) graph_view.resize();
     }
     else setTimeout(resizingTimer, resize_timer_tick);
@@ -119,6 +120,7 @@ window.onresize = function ()
     }
 }
 
+/* closing handler ********************************************************* */
 window.onmessage = (event) => {
     // event.source === window means the message is coming from the preload
     // script, as opposed to from an <iframe> or other source.
@@ -127,4 +129,10 @@ window.onmessage = (event) => {
         saveJSB ()
         window.API.exit ();
     }
+}
+
+/* about dialog ********************************************************* */
+function About ()
+{
+    var popup = window.open ("About.html", "about", "width=640, height=320, resizeable=no");
 }

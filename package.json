@@ -44,7 +44,7 @@
           "name": "@electron-forge/publisher-github",
           "config": {
             "repository": {
-              "owner": "flying.toaster45",
+              "owner": "flying-toaster42",
               "name": "JSBgraphicEditor"
             }
           }

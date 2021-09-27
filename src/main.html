@@ -82,15 +82,14 @@
                 <div class="dropdown">
                     <button class="dropbtn">Edit</button>
                     <div class="dropdown-content">
-                        <div class="menu-item" >Cut</div>
-                        <div class="menu-item" >Copy</div>
-                        <div class="menu-item" >Paste</div>
+                        <div onclick="if (active_curve != null) active_curve.table2D.copy();" class="menu-item" >Copy</div>
+                        <div onclick="if (active_curve != null) active_curve.table2D.paste();" class="menu-item" >Paste</div>
                     </div>
                 </div>
                 <div class="dropdown">
                     <button class="dropbtn">Help</button>
                     <div class="dropdown-content">
-                        <div class="menu-item" >About</div>
+                        <div onclick="About();"" class="menu-item" >About</div>
                     </div>
                 </div>
             </div>
@@ -149,7 +148,6 @@
             </div>
 
         </div>
-
 
     </body>
 

@@ -166,7 +166,7 @@ function loadJSB ()
     $("#central-placeholder").hide(0);
     $("#graphic-placeholder").hide(0);
     $("#graphic-area").show(0);
-    if (curve1 !=null) curve1.hide();
+    if (active_curve !=null) active_curve.hide();
 
     parser = new DOMParser();
     xmlDoc = parser.parseFromString(text,"text/xml");
@@ -193,11 +193,11 @@ function loadJSB ()
     tables_tree.on ("select_node.jstree",
                     function (e, data)
                     {
-                        if (curve1 == null)
+                        if (active_curve == null)
                         {
-                            curve1 = new Curve ("#curve", "#curve-title", "#buttons");
+                            active_curve = new Curve ("#curve", "#curve-title", "#buttons");
                             numeric_view = new NumericView();
-                            curve1.resize();
+                            active_curve.resize();
                         }
                         if (data.selected.length == 1)
                         file_tree.jstree('deselect_node', file_tree.jstree("get_selected"));
@@ -212,8 +212,8 @@ function loadJSB ()
                                                 behavior: 'smooth'});
 
                         if (data.node.original.table_index != -1)
-                                tables [data.node.original.table_index].associate (curve1, numeric_view);
-                        else curve1.hide();
+                                tables [data.node.original.table_index].associate (active_curve, numeric_view);
+                        else active_curve.hide();
 
                     });
     central_pane.resize ();
