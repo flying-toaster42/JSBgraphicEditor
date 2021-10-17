@@ -13,7 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with JSB graphic editor.  If not, see <https://www.gnu.org/licenses/>.
 
-// remaps all the tables in a 3D table so that they share the same absissas 
+// remaps all the tables in a 3D table so that they share the same absissas
 // Note This is not undoable
 Table3D.prototype.remapX = function ()
 {
@@ -53,6 +53,24 @@ Table3D.prototype.remapX = function ()
 /*---------------------------------------------------------------------------*/
 Table3D.prototype.storeBackInXML = function ()
 {
+    //Search for adequate tabulation level
+    var parent_text = this.XML_source[0].parentElement.outerHTML;
+    var tag_index = parent_text.search ("<tableData>");
+    var start_index = tag_index;
+
+    while (start_index != 0 && parent_text[start_index]!='\n')
+    {
+        start_index --;
+    }
+    start_index++
+
+    var root_tabulation = "";
+    for (var i = start_index; i<tag_index;i++)
+    {
+        root_tabulation+= parent_text[i];
+    }
+
+
     this.XML_source.empty();
 
     var new_contents ="";
@@ -60,7 +78,7 @@ Table3D.prototype.storeBackInXML = function ()
     var y = 0;
 
     //write first line with y values
-    new_contents += "\n\t\t";
+    new_contents += "\n"+root_tabulation+"\t\t";
     for (index in this.y_values)
     {
         y = parseFloat(this.y_values[index]);
@@ -77,7 +95,7 @@ Table3D.prototype.storeBackInXML = function ()
         //TODO : check that we go back to the original data
         x = parseFloat(this.tables[0].x[line_index])/this.tables[0].x_axis.unit.factor;
 
-        new_contents += "\t"+x;
+        new_contents += root_tabulation+"\t"+x;
 
         for (column_index in this.tables)
         {
@@ -90,5 +108,6 @@ Table3D.prototype.storeBackInXML = function ()
          new_contents +="\n";
     }
 
+    new_contents += root_tabulation;
     this.XML_source.text (new_contents);
 }

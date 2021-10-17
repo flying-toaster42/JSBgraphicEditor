@@ -16,6 +16,24 @@
 /*---------------------------------------------------------------------------*/
 Table2D.prototype.storeBackInXML = function ()
 {
+    //Search for adequate tabulation level
+    var parent_text = this.XML_source[0].parentElement.outerHTML;
+    var tag_index = parent_text.search ("<tableData>");
+    var start_index = tag_index;
+
+    while (start_index != 0 && parent_text[start_index]!='\n')
+    {
+        start_index --;
+    }
+    start_index++;
+
+    var root_tabulation = "";
+    for (var i = start_index; i<tag_index;i++)
+    {
+        root_tabulation+= parent_text[i];
+    }
+
+    //fill the text
     this.XML_source.empty();
 
     var new_contents ="\n";
@@ -27,8 +45,9 @@ Table2D.prototype.storeBackInXML = function ()
         x = parseFloat(this.x[index])/this.x_axis.unit.factor;
         y = parseFloat(this.y[index])/this.y_axis.unit.factor;
 
-        new_contents += "\t\t"+x+"\t"+y+"\n";
+        new_contents += root_tabulation+"\t"+x+"\t"+y+"\n";
     }
+    new_contents += root_tabulation;
 
     this.XML_source.text (new_contents);
 }
